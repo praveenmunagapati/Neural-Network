@@ -36,3 +36,20 @@ class Softmax(Layer):
         # Original formula:
         # tmp = np.tile(self.output, n)
         # return np.dot(tmp * (np.identity(n) - np.transpose(tmp)), output_gradient)
+class TanH:
+    @staticmethod
+    def activation(layer_input):
+        return np.tanh(layer_input)
+
+    @staticmethod
+    def activation_prime(layer_input):
+        return 1 - np.power(np.tanh(layer_input), 2)
+
+class ReLU:
+    @staticmethod
+    def activation(layer_input):
+        return np.where(layer_input >= 0, layer_input, 0)
+
+    @staticmethod
+    def activation_prime(layer_input):
+        return np.where(layer_input >= 0, 1, 0)
